@@ -10,94 +10,39 @@ class XylophoneApp extends StatelessWidget {
     final player = AudioCache();
     player.play('note$soundNumber.wav');
   }
+
+  Expanded buildKeys({int soundNumber, Color color}){
+    return Expanded(
+      child: Container(
+        //height: 100,
+        child: TextButton(
+          style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(color)),
+          onPressed: () {
+            playSound(soundNumber);
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(height:10),
-              Expanded(
-                child: Container(
-                  //height: 100,
-                child: TextButton(
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.red)),
-                  onPressed: () {
-                    playSound(1);
-                  },
-                  ),
-                ),
-              ),
-              SizedBox(height:10),
-              Expanded(
-                child: Container(
-                  child: TextButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.orange)),
-                    onPressed: () {
-                      playSound(2);
-                    },
-                    ),
-                ),
-              ),
-              SizedBox(height:10),
-              Expanded(
-                child: Container(
-                  child: TextButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.yellow)),
-                    onPressed: () {
-                      playSound(3);
-                    },
-                    ),
-                ),
-              ),
-              SizedBox(height:10),
-              Expanded(
-                child: Container(
-                  child: TextButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green)),
-                    onPressed: () {
-                      playSound(4);
-                    },
-                    ),
-                ),
-              ),
-              SizedBox(height:10),
-              Expanded(
-                child: Container(
-                  child: TextButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.teal)),
-                    onPressed: () {
-                      playSound(5);
-                    },
-                    ),
-                ),
-              ),
-              SizedBox(height:10),
-              Expanded(
-                child: Container(
-                  child: TextButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.blue)),
-                    onPressed: () {
-                      playSound(6);
-                    },
-                    ),
-                ),
-              ),
-              SizedBox(height:10),
-              Expanded(
-                child: Container(
-                  child: TextButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.purple)),
-                    onPressed: () {
-                      playSound(7);
-                    },
-                    ),
-                ),
-              ),
-              SizedBox(height:10),]
+              buildKeys(soundNumber:1, color:Colors.red),
+              buildKeys(soundNumber:2, color:Colors.orange),
+              buildKeys(soundNumber:3, color:Colors.yellow),
+              buildKeys(soundNumber:4, color:Colors.green),
+              buildKeys(soundNumber:5, color:Colors.teal),
+              buildKeys(soundNumber:6, color:Colors.blue),
+              buildKeys(soundNumber:7, color:Colors.purple),
+]
 
           ),
         ),
